@@ -3,6 +3,7 @@
 # {1}
 
 /* create table statements needed to create the tables */
+/* list all functional dependencies as comments  */
 DROP TABLE IF EXISTS auth_user;
 CREATE TABLE auth_user(
   alpha INT NOT NULL,
@@ -13,6 +14,7 @@ CREATE TABLE auth_user(
   lastLogin TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT PK_auth_user PRIMARY KEY (alpha)
 );
+/* alpha -> (hash, first, last, sessionText, lastLogin) */
 
 DROP TABLE IF EXISTS auth_session;
 CREATE TABLE auth_session(
@@ -24,6 +26,7 @@ CREATE TABLE auth_session(
     REFERENCES auth_user (alpha)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
+/* id -> (alpha, lastVisit) */
 
 DROP TABLE IF EXISTS auth_access;
 CREATE TABLE auth_access(
@@ -35,6 +38,7 @@ CREATE TABLE auth_access(
    REFERENCES auth_user (alpha)
    ON DELETE CASCADE ON UPDATE CASCADE
 );
+/* alpha -> (access, value) */
 
 DROP TABLE IF EXISTS courses;
 CREATE TABLE courses(
@@ -42,6 +46,7 @@ CREATE TABLE courses(
   courseTitle VARCHAR(100) NULL,
   CONSTRAINT PK_courses PRIMARY KEY (courseCode)
 );
+/* courseCode -> courseTitle */
 
 DROP TABLE IF EXISTS student_courses;
 CREATE TABLE student_courses(
