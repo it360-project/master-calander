@@ -6,7 +6,7 @@
 /* list all functional dependencies as comments  */
 DROP TABLE IF EXISTS auth_user;
 CREATE TABLE auth_user(
-  alpha INT NOT NULL,
+  alpha VARCHAR(7) NOT NULL,
   firstName VARCHAR(250) NULL,
   lastName VARCHAR (250) NULL,
   session TEXT NULL,
