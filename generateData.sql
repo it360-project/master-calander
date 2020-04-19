@@ -3,10 +3,10 @@
 # {1}
 
 /* contains the SQL statements to insert at least two rows */
-INSERT INTO auth_user (alpha, hash, firstName, lastName)
-  VALUES (213474, "hash1", "Sam", "Kim"),
-  (213990, "hash2", "Jess", "Lonetti"),
-  (215294, "hash3", "Greg", "Polmatier");
+INSERT INTO auth_user (alpha, firstName, lastName)
+  VALUES (213474, "Sam", "Kim"),
+  (213990, "Jess", "Lonetti"),
+  (215294, "Greg", "Polmatier");
 
 INSERT INTO auth_session (id, alpha)
   VALUES ("id1", 213474),
