@@ -4,14 +4,14 @@
 
 /* contains the SQL statements to insert at least two rows */
 INSERT INTO auth_user (alpha, firstName, lastName)
-  VALUES (213474, "Sam", "Kim"),
-  (213990, "Jess", "Lonetti"),
-  (215294, "Greg", "Polmatier");
+  VALUES ("m213474", "Sam", "Kim"),
+  ("m213990", "Jess", "Lonetti"),
+  ("m215294", "Greg", "Polmatier");
 
 INSERT INTO auth_session (id, alpha)
-  VALUES ("id1", 213474),
-  ("id2", 213990),
-  ("id3", 215294);
+  VALUES ("id1", "m213474"),
+  ("id2", "m213990"),
+  ("id3", "m215294");
 
 INSERT INTO auth_access VALUES
   (213474, 1),
