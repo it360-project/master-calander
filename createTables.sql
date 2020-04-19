@@ -18,7 +18,7 @@ CREATE TABLE auth_user(
 DROP TABLE IF EXISTS auth_session;
 CREATE TABLE auth_session(
   id VARCHAR(96) NOT NULL,
-  alpha INT NOT NULL,
+  alpha VARCHAR(7) NOT NULL,
   lastVisit TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT PK_auth_session PRIMARY KEY (id, alpha),
   CONSTRAINT FK_auth_session_alpha FOREIGN KEY(alpha)
@@ -29,7 +29,7 @@ CREATE TABLE auth_session(
 
 DROP TABLE IF EXISTS auth_access;
 CREATE TABLE auth_access(
-  alpha INT NOT NULL,
+  alpha VARCHAR(7) NOT NULL,
   value INT NOT NULL,
   CONSTRAINT PK_auth_access PRIMARY KEY (alpha, value),
   CONSTRAINT FK_auth_access_alpha FOREIGN KEY(alpha)
@@ -48,7 +48,7 @@ CREATE TABLE courses(
 
 DROP TABLE IF EXISTS student_courses;
 CREATE TABLE student_courses(
-  alpha INT NOT NULL,
+  alpha VARCHAR(7) NOT NULL,
   courseCode VARCHAR(10) NOT NULL,
   CONSTRAINT PK_student_courses PRIMARY KEY (alpha, courseCode),
   CONSTRAINT FK_student_courses_student FOREIGN KEY(alpha)
