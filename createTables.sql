@@ -7,7 +7,6 @@
 DROP TABLE IF EXISTS auth_user;
 CREATE TABLE auth_user(
   alpha INT NOT NULL,
-  hash VARCHAR(250) NOT NULL,
   firstName VARCHAR(250) NULL,
   lastName VARCHAR (250) NULL,
   session TEXT NULL,
