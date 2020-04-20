@@ -1,5 +1,5 @@
 site is accessible at:
-http://midn.cs.usna.edu/~m213474/IT360/IT360-project/login.php
+<http://midn.cs.usna.edu/~m213474/IT360/IT360-project/login.php>
 
 logon() doesnt store first and last last names properly (though this can be
   accessed through $_SESSION populated by usna authentication)
