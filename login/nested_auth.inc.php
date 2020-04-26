@@ -1,13 +1,13 @@
 <?php
 /* Author: MIDN 2/C Samuel Kim
  * Purpose: consolidate the functions and logic necessary for tracking
- * 	user logins, session information and corresponding database 
- * 	inserts/updates.
+ *      user logins, session information and corresponding database 
+ *      inserts/updates.
  * This code is adapted from Lab 07: PHP Sessions.
- */ 
+ */
 
-//MySQL library
-require_once('../../../../priv/mysql.inc.php');
+//THIS FILE IS NOT A DUPLICATE (has minor changes for files within subdirectories)
+require_once('../../../../../priv/mysql.inc.php');
 //connect to SQLiteDatabase
 $db = new myConnectDB();
 
@@ -15,6 +15,7 @@ $db = new myConnectDB();
 session_start();
 $sessionid = session_id();
 
+//retrieve information from session array
 $username = $_SESSION['user']['user'];
 $fullname = $_SESSION['user']['fullname'];
 $first = $_SESSION['user']['first'];
@@ -23,7 +24,7 @@ $last = $_SESSION['user']['last'];
 //log user off if requested and redirect
 if (isset($_REQUEST['logoff'])) {
   logoff($db, $sessionid);
-  header('Location: login/login.php');
+  header('Location: ../login/login.php');
   die;
 }
 
@@ -31,7 +32,7 @@ if (isset($_REQUEST['logoff'])) {
 if ($username) {
   //validate credentials, redirect if validation fails
   if (!logon($db, $username, $sessionid)) {
-    header('Location: login/login.php');
+    header('Location: ../login/login.php');
     die;
   }
 }
@@ -39,21 +40,20 @@ if ($username) {
 //verify user is logged in, otherwise redirect
 $user = verify($db, $sessionid);
   if ($user == '') {
-  header('Location: login/login.php');
+  header('Location: ../login/login.php');
   die;
 }
 
 /*
 logon() allows users to log in to the application
-  links a session to a user (database backend)
-Input:
-  $db mysqli object
-  $username - string password provided by user
-  $sessionid - string result of session_start()
+links a session to a user (database backend)
+Input: $db mysqli object
+$username - string password provided by user
+$sessionid - string result of session_start()
 Output: true if credentials are valid and a session was created
 */
 function logon($db, $username, $sessionid) {
-  //build query for retrieving alpha from user table
+  //build query
   $query = "SELECT alpha
   FROM auth_user
   WHERE alpha = ?";
@@ -93,6 +93,7 @@ function logon($db, $username, $sessionid) {
 
   $success = $stmt -> execute();
 
+  //error messages
   if ($db -> affected_rows == 0){
     echo "<h5> logon(): ERROR! No rows updated in auth_user( lastlogin )!</h5>";
     return FALSE;
@@ -152,9 +153,8 @@ function signUp($db, $username, $first, $last) {
     echo "<h5>ERROR: " . $db -> error . " for query *$query* in signUp()</h5><hr> Please Try Again!";
   }
 
-  // only build INSERT for session table if previous INSERT was successful
+  //only create second INSERT statement if previous INSERT was successful
   if($success1) {
-    //create a session row for newly-inserted user
     $sessionQuery = "INSERT INTO auth_session (id, alpha, lastVisit)
     VALUES(?, ?, NOW())
     ON DUPLICATE KEY UPDATE lastvisit=NOW()";
@@ -196,6 +196,7 @@ function logoff($db, $sessionid) {
   $stmt -> bind_param ('s', $sessionid);
   $success = $stmt -> execute();
 
+  //destroy session on user logoff
   session_destroy();
 
   return $success;
@@ -294,7 +295,7 @@ function update( $db, $username, $sessionString, $test = FALSE ){
   return $success;
 }
 
-//update user row in the table
+//regularly update user information in the table
 update($db, $username, session_encode());
 ?>
 

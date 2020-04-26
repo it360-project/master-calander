@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * Taken from IT452
+ * Purpose: allow authentication through USNA
+ */ 
   // Academy Logon Library for PHP.
   // Updates to this library may be available on
   // github at https://github.com/jskenney/academy-credentials

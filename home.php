@@ -150,7 +150,7 @@
 <!-- Begin providing the contents of the page -->
 <div class="container">
 <h2>Welcome  to  Master-Calander!</h2>
-
+<h4>Click <a href="student_courses/courseForm.php">here</a> to input your courses</h4>
 <p><a href="home.php?logoff=1">Sign out</a></p>
 
 </div> <!-- /container --></body></html>

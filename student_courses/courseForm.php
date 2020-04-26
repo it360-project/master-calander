@@ -1,20 +1,11 @@
-<!-- 
-Author: MIDN 2/C Samuel Kim
-Purpose: Users who are not logged in will be redirected to this page.
-	and prompted to log in.
--->
-<!-- visitors can only access this page if NOT logged in -->
 <?php
-session_start();
-//redirect if session is already set, do not allow logged-in users to try and log-in again
-if(isset($_SESSION['user']))
-  header("location: ../home.php");
-
-//form action is itself, if login request flag isset, redirect to USNA authentication
-if(isset($_REQUEST['login'])) {
-  require_once('lib_authenticate.php');
-  header("location: ../home.php");
-}
+  /*
+   * Author: MIDN 2/C Samuel Kim
+   * Purpose: page which presents two successive forms:
+        first form for entering how many courses currently being taken
+        second form for entering courses
+   */
+  require_once('../login/nested_auth.inc.php');
 ?>
 
 <!DOCTYPE html>
@@ -149,19 +140,95 @@ if(isset($_REQUEST['login'])) {
             <li><a title="Information" href="../calendar.php?load=policy">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                 </a></li>
-
-
-
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
   <!-- End TopBar and CSS Stuff! -->
-<!-- Begin providing the contents of the page -->
-<div class="container">
-  <h2> Not logged in!</h2>
-  <p><a href="login.php?login=1">Sign in</a></p>
+    <div class='container'>
+      <div class='row'>
+        <h2> Course Entry </h2><br>
+      </div>
+      <div class='row'>
+        <?php
+          //present form for number of courses
+          if(!isset($_POST['numCourses'])) {
+            numForm();
+          }
+          //present form for course entry if number of courses has been submitted
+          else {
+            codeForm();
+          }
+        ?>
+      </div>
+    </div>
+  </body>
+</html>
 
-</div> <!-- /container --></body></html>
+<?php
+  /* Purpose: generate a form asking for number of courses being taken
+   * Input: none
+   * Output: HTML for one-line form
+   */
+    function numForm() {
+      //form action is itself (in order to fill out the actual courses themselves after submitting)
+      echo "<form method='POST' action='courseForm.php'>
+              <label for='numCourses'>Number of courses this semester</label>
+              <input type='text' id='numCourses' name='numCourses' placeholder='5'>
+              <button type='submit' class='btn btn-default'>Submit</button>
+            </form>";
+    }
+
+  /* Purpose: generate a form asking for list of courses being taken
+   * Input: none
+   * Output: HTML for form with variable lines based on response to numForm()'s form
+   */
+  function codeForm() {
+	echo "<h5>Warning: only CS/IT courses will be populated in the calendar</h5>";
+      echo "<form method='POST' action='insertStudentCourses.php'>
+              <label for='numCourses'>Courses</label>";
+
+      //retrieve submitted input from previous form
+      $numCourses = $_POST['numCourses'];
+
+      //cap number of courses at 10 (arbitrary number in case of malicious entry)
+      if($numCourses > 10)
+	     	$numCourses = 10;
+
+      //first text input has placeholder, store inputs in an array
+      echo "<input list='courses' type='text' id='course1' name='course[]' placeholder='IT360, APPLIED DATABASE SYSTEMS' size='40' required><br>";
+      for($i = 1; $i < $numCourses; $i++) {
+        echo "<input list='courses' type='text' id='course$i' name='course[]' size='40' required><br>";
+      }
+
+      //include HTML for autocomplete mechanism
+      insertDataList();
+
+      echo "<button type='submit' class='btn btn-default'>Submit</button>
+          </form>";
+    }
+
+    /* Purpose: implement HTML5 autocomplete for course entries
+       Input: none
+       Output: HTML for autocompletion of courses
+    */
+    function insertDataList() {
+      //code for HTML5 autocomplete
+      echo "<datalist id='courses'>";
+
+      //open filestream for list of courses
+      $file = fopen("../courses/courses.csv","r");
+      //read in first line of format
+      fgets($file);
+
+      //loop for reading file line by line
+      while(!feof($file)) {
+        $line = fgets($file);
+        echo "<option value = '$line'/>";
+      }
+
+      echo "</datalist>";
+    }
+?>
 
