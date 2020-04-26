@@ -1,5 +1,16 @@
 <!-- visitors can only access this page if logged in -->
 
+  <!--
+  // Author: Jess Lonetti,Greg Polmatier,Sam Kim...CS Department(Navbar and CSS)
+  // Title: Master Calander
+  // Date: 4.26.2020
+  // ****--------FUNCTIONALITY---------****
+  // This allows access to a users whole schedule
+  // if calander is made using the default cs page style
+  //
+  </style>
+ -->
+
 <?php
   require_once('login/auth.inc.php');
 ?>
@@ -7,7 +18,10 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" style="background-color:#F2FEFE;">
+=======
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,49 +40,16 @@
     <link rel="stylesheet" href="calendar/Skeleton/css/skeleton.css">
     <link rel="stylesheet" href="calendar/css/skeleton-modifications.css">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!-- <link href="calendar/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
-
-    <!-- Fonts -->
-    <!-- <link href='calendar/fonts/raleway.css' rel='stylesheet' type='text/css'> -->
-
-    <!-- Ace Code Editor - https://ace.c9.io/ -->
-    <!-- <script type="text/javascript"
-      src="calendar/ace-builds/src-noconflict/ace.js" charset="utf-8">
-    </script> -->
-
-    <!-- Chart.js - http://www.chartjs.org -->
-    <!-- <script type="text/javascript"
-      src="calendar/chartjs/Chart.bundle.min.js" charset="utf-8">
-    </script> -->
-
-    <!-- To support challenge/response authentication within course notes-->
-        <!-- <script type="text/javascript">
-      var nonce = "b227c3c5011d9512561e1dc358731d9b7e7f953d566b201369061f375e010899";
-    </script>
-    <script type="text/javascript" src="calendar/js/sha256.js"></script> -->
 
     <!-- Styles for the submission System -->
     <link href="calendar/css/calendar-default.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
-    <!-- MathJax -->
-    <!-- <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ["\\(","\\)"] ],
-          processEscapes: true
-        }
-      });
-    </script>
-    <script type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script> -->
+
+    <!-- Styles for the submission System -->
+    <link href="calendar/css/calendar-default.css" rel="stylesheet">
+
+
 
     <!-- Highlight.js -->
     <link rel="stylesheet" href="calendar/highlight/styles/color-brewer.css">
@@ -102,7 +83,9 @@
   <title>Master-Calander</title>
 
   </head>
-  <body>
+
+  <body style="background-color:#F2FEFE;">
+
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -123,23 +106,11 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-            <li><a href="calendar.php?load=home">
-                IT360 - Applied Database Systems</a></li>
 
-
-            <li><a title="Calendar" href="calendar.php?show=calendar_display">
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Resources" href="calendar.php?load=resources">
-                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Information" href="calendar.php?load=policy">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </a></li>
-
-
+            <li><a href="#">
+                Master Calander</a></li>
+            <li><a href="home.php?logoff=1">Sign out</a></li>
+            <li><a href="http://submit.cs.usna.edu/site/home.php">Submission</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -148,9 +119,13 @@
 
   <!-- End TopBar and CSS Stuff! -->
 <!-- Begin providing the contents of the page -->
-<div class="container">
-<h2>Welcome  to  Master-Calander!</h2>
-<h4>Click <a href="student_courses/courseForm.php">here</a> to input your courses</h4>
-<p><a href="home.php?logoff=1">Sign out</a></p>
 
-</div> <!-- /container --></body></html>
+<div class="container" id="cal">
+
+
+</div>
+ <!-- /container AKA CALANDER -->
+</body>
+<script src="calander.js"></script>
+</html>
+
