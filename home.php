@@ -1,4 +1,5 @@
 <!-- visitors can only access this page if logged in -->
+
   <!--
   // Author: Jess Lonetti,Greg Polmatier,Sam Kim...CS Department(Navbar and CSS)
   // Title: Master Calander
@@ -9,14 +10,18 @@
   //
   </style>
  -->
+
 <?php
-  // require_once('auth.inc.php');
+  require_once('login/auth.inc.php');
 ?>
 
 
 
 <!DOCTYPE html>
+
 <html lang="en" style="background-color:#F2FEFE;">
+=======
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,8 +40,15 @@
     <link rel="stylesheet" href="calendar/Skeleton/css/skeleton.css">
     <link rel="stylesheet" href="calendar/css/skeleton-modifications.css">
 
+
     <!-- Styles for the submission System -->
     <link href="calendar/css/calendar-default.css" rel="stylesheet">
+
+
+
+    <!-- Styles for the submission System -->
+    <link href="calendar/css/calendar-default.css" rel="stylesheet">
+
 
 
     <!-- Highlight.js -->
@@ -71,7 +83,9 @@
   <title>Master-Calander</title>
 
   </head>
+
   <body style="background-color:#F2FEFE;">
+
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -92,6 +106,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
+
             <li><a href="#">
                 Master Calander</a></li>
             <li><a href="home.php?logoff=1">Sign out</a></li>
@@ -104,6 +119,7 @@
 
   <!-- End TopBar and CSS Stuff! -->
 <!-- Begin providing the contents of the page -->
+
 <div class="container" id="cal">
 
 
@@ -112,3 +128,4 @@
 </body>
 <script src="calander.js"></script>
 </html>
+

@@ -1,5 +1,5 @@
 ## Master Calander
-IT360 Project - Sam Kim, Jess Lonetti, and Gregory Polmatier
+#### IT360 Project - Sam Kim, Jess Lonetti, and Gregory Polmatier
 
 Typically a computer science student at the United States Naval Academy has to bookmark three to four websites that are usually standard across professors, but NO MORE! With our team “Master Organizers”, we are revolutionizing the standard calendar system by allowing our users to provide information about which courses they are taking in order for us to compile a master calendar for them. A web application with a database backend is appropriate for this because we can have a table for each student’s courses. Bonus users could update personal goals to the calendar and maybe add saturday and sundays. 
 
