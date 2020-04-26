@@ -1,6 +1,11 @@
 <?php
+/* Author: MIDN 2/C Samuel Kim
+ * Purpose: Insert rows in database from form input.
+ */
+
   require_once('../login/nested_auth.inc.php');
 
+  //connect to db
   $db = new myConnectDB();
 
   if (mysqli_connect_errno()) {
@@ -30,7 +35,16 @@
     insertStudentCourses($db, $alpha, $courseCode);
   }
 
+  /* Purpose: insert student-course pairs into database
+   * Input:
+        $db - mysqli class
+        $alpha - student's malpha code
+        $courseCode - courseCode for course being taken
+     Output:
+        error message if unsuccessful, none if successful (check db for proper insertion)
+   */
   function insertStudentCourses($db, $alpha, $courseCode) {
+    //build INSERT statement
     $query = "INSERT INTO student_courses (alpha, courseCode)
                 VALUES (?, ?);";
 
@@ -39,9 +53,10 @@
     $stmt->bind_param('ss', $alpha, $courseCode);
 
     $success = $stmt->execute();
+
+    //error message
     if (!$success || $db->affected_rows == 0) {
       echo "<h5>ERROR: " . $db->error . " for query *$query*</h5><hr>";
-      return false;
     }
     else {
       //user feedback for successfully added courses
@@ -49,8 +64,6 @@
     }
 
     $stmt->close();
-
-    return true;
   }
 ?>
 

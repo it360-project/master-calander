@@ -1,9 +1,12 @@
-
 <?php
+  /*
+   * Author: MIDN 2/C Samuel Kim
+   * Purpose: page which presents two successive forms:
+        first form for entering how many courses currently being taken
+        second form for entering courses
+   */
   require_once('../login/nested_auth.inc.php');
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -137,9 +140,6 @@
             <li><a title="Information" href="../calendar.php?load=policy">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                 </a></li>
-
-
-
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -152,10 +152,11 @@
       </div>
       <div class='row'>
         <?php
-          //present form for number of courses, or course code entry
+          //present form for number of courses
           if(!isset($_POST['numCourses'])) {
             numForm();
           }
+          //present form for course entry if number of courses has been submitted
           else {
             codeForm();
           }
@@ -166,7 +167,12 @@
 </html>
 
 <?php
+  /* Purpose: generate a form asking for number of courses being taken
+   * Input: none
+   * Output: HTML for one-line form
+   */
     function numForm() {
+      //form action is itself (in order to fill out the actual courses themselves after submitting)
       echo "<form method='POST' action='courseForm.php'>
               <label for='numCourses'>Number of courses this semester</label>
               <input type='text' id='numCourses' name='numCourses' placeholder='5'>
@@ -174,21 +180,39 @@
             </form>";
     }
 
-    function codeForm() {
+  /* Purpose: generate a form asking for list of courses being taken
+   * Input: none
+   * Output: HTML for form with variable lines based on response to numForm()'s form
+   */
+  function codeForm() {
+	echo "<h5>Warning: only CS/IT courses will be populated in the calendar</h5>";
       echo "<form method='POST' action='insertStudentCourses.php'>
               <label for='numCourses'>Courses</label>";
+
+      //retrieve submitted input from previous form
       $numCourses = $_POST['numCourses'];
+
+      //cap number of courses at 10 (arbitrary number in case of malicious entry)
       if($numCourses > 10)
 	     	$numCourses = 10;
+
+      //first text input has placeholder, store inputs in an array
       echo "<input list='courses' type='text' id='course1' name='course[]' placeholder='IT360, APPLIED DATABASE SYSTEMS' size='40' required><br>";
       for($i = 1; $i < $numCourses; $i++) {
         echo "<input list='courses' type='text' id='course$i' name='course[]' size='40' required><br>";
       }
+
+      //include HTML for autocomplete mechanism
       insertDataList();
+
       echo "<button type='submit' class='btn btn-default'>Submit</button>
           </form>";
     }
 
+    /* Purpose: implement HTML5 autocomplete for course entries
+       Input: none
+       Output: HTML for autocompletion of courses
+    */
     function insertDataList() {
       //code for HTML5 autocomplete
       echo "<datalist id='courses'>";

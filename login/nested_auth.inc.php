@@ -1,6 +1,12 @@
 <?php
-//THIS FILE IS NOT A DUPLICATE (has minor changes for files within subdirectories) DO NOT DELETE
-//MySQL library
+/* Author: MIDN 2/C Samuel Kim
+ * Purpose: consolidate the functions and logic necessary for tracking
+ *      user logins, session information and corresponding database 
+ *      inserts/updates.
+ * This code is adapted from Lab 07: PHP Sessions.
+ */
+
+//THIS FILE IS NOT A DUPLICATE (has minor changes for files within subdirectories)
 require_once('../../../../../priv/mysql.inc.php');
 //connect to SQLiteDatabase
 $db = new myConnectDB();
@@ -9,6 +15,7 @@ $db = new myConnectDB();
 session_start();
 $sessionid = session_id();
 
+//retrieve information from session array
 $username = $_SESSION['user']['user'];
 $fullname = $_SESSION['user']['fullname'];
 $first = $_SESSION['user']['first'];
@@ -38,11 +45,6 @@ $user = verify($db, $sessionid);
 }
 
 /*
-Much of the functionality in this file was developed for lab in
-IT360: Applied Database Systems
-*/
-
-/*
 logon() allows users to log in to the application
 links a session to a user (database backend)
 Input: $db mysqli object
@@ -51,6 +53,7 @@ $sessionid - string result of session_start()
 Output: true if credentials are valid and a session was created
 */
 function logon($db, $username, $sessionid) {
+  //build query
   $query = "SELECT alpha
   FROM auth_user
   WHERE alpha = ?";
@@ -90,6 +93,7 @@ function logon($db, $username, $sessionid) {
 
   $success = $stmt -> execute();
 
+  //error messages
   if ($db -> affected_rows == 0){
     echo "<h5> logon(): ERROR! No rows updated in auth_user( lastlogin )!</h5>";
     return FALSE;
@@ -149,6 +153,7 @@ function signUp($db, $username, $first, $last) {
     echo "<h5>ERROR: " . $db -> error . " for query *$query* in signUp()</h5><hr> Please Try Again!";
   }
 
+  //only create second INSERT statement if previous INSERT was successful
   if($success1) {
     $sessionQuery = "INSERT INTO auth_session (id, alpha, lastVisit)
     VALUES(?, ?, NOW())
@@ -191,6 +196,7 @@ function logoff($db, $sessionid) {
   $stmt -> bind_param ('s', $sessionid);
   $success = $stmt -> execute();
 
+  //destroy session on user logoff
   session_destroy();
 
   return $success;
@@ -289,6 +295,7 @@ function update( $db, $username, $sessionString, $test = FALSE ){
   return $success;
 }
 
+//regularly update user information in the table
 update($db, $username, session_encode());
 ?>
 

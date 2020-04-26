@@ -1,15 +1,21 @@
+<!-- 
+Author: MIDN 2/C Samuel Kim
+Purpose: Users who are not logged in will be redirected to this page.
+	and prompted to log in.
+-->
 <!-- visitors can only access this page if NOT logged in -->
 <?php
 session_start();
+//redirect if session is already set, do not allow logged-in users to try and log-in again
 if(isset($_SESSION['user']))
   header("location: ../home.php");
+
+//form action is itself, if login request flag isset, redirect to USNA authentication
 if(isset($_REQUEST['login'])) {
   require_once('lib_authenticate.php');
   header("location: ../home.php");
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -158,3 +164,4 @@ if(isset($_REQUEST['login'])) {
   <p><a href="login.php?login=1">Sign in</a></p>
 
 </div> <!-- /container --></body></html>
+

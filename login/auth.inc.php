@@ -1,4 +1,11 @@
 <?php
+/* Author: MIDN 2/C Samuel Kim
+ * Purpose: consolidate the functions and logic necessary for tracking
+ * 	user logins, session information and corresponding database 
+ * 	inserts/updates.
+ * This code is adapted from Lab 07: PHP Sessions.
+ */ 
+
 //MySQL library
 require_once('../../../../priv/mysql.inc.php');
 //connect to SQLiteDatabase
@@ -37,19 +44,16 @@ $user = verify($db, $sessionid);
 }
 
 /*
-Much of the functionality in this file was developed for lab in
-IT360: Applied Database Systems
-*/
-
-/*
 logon() allows users to log in to the application
-links a session to a user (database backend)
-Input: $db mysqli object
-$username - string password provided by user
-$sessionid - string result of session_start()
+  links a session to a user (database backend)
+Input:
+  $db mysqli object
+  $username - string password provided by user
+  $sessionid - string result of session_start()
 Output: true if credentials are valid and a session was created
 */
 function logon($db, $username, $sessionid) {
+  //build query for retrieving alpha from user table
   $query = "SELECT alpha
   FROM auth_user
   WHERE alpha = ?";
@@ -148,7 +152,9 @@ function signUp($db, $username, $first, $last) {
     echo "<h5>ERROR: " . $db -> error . " for query *$query* in signUp()</h5><hr> Please Try Again!";
   }
 
+  // only build INSERT for session table if previous INSERT was successful
   if($success1) {
+    //create a session row for newly-inserted user
     $sessionQuery = "INSERT INTO auth_session (id, alpha, lastVisit)
     VALUES(?, ?, NOW())
     ON DUPLICATE KEY UPDATE lastvisit=NOW()";
@@ -288,6 +294,7 @@ function update( $db, $username, $sessionString, $test = FALSE ){
   return $success;
 }
 
+//update user row in the table
 update($db, $username, session_encode());
 ?>
 
