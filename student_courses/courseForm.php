@@ -179,12 +179,31 @@
       echo "<form method='POST' action='insertStudentCourses.php'>
               <label for='numCourses'>Course codes</label>";
       $numCourses = $_POST['numCourses'];
-      echo "<input type='text' id='course1' name='course[1]' placeholder='IT360' required><br>";
+      echo "<input list='courses' type='text' id='course1' name='course[1]' placeholder='IT360,APPLIED DATABASE SYSTEMS' required><br>";
       for($i = 1; $i < $numCourses; $i++) {
-        echo "<input type='text' id='course[$i]' name='course[$i]' required><br>";
+        echo "<input list='courses' type='text' id='course[$i]' name='course[$i]' required><br>";
       }
+      insertDataList();
       echo "<button type='submit' class='btn btn-default'>Submit</button>
           </form>";
+    }
+
+    function insertDataList() {
+      //code for HTML5 autocomplete
+      echo "<datalist id='courses'>";
+
+      //open filestream for list of courses
+      $file = fopen("../courses/courses.csv","r");
+      //read in first line of format
+      fgets($file);
+
+      //loop for reading file line by line
+      while(!feof($file)) {
+        $line = fgets($file);
+        echo "<option value = '$line'/>";
+      }
+
+      echo "</datalist>";
     }
 ?>
 
