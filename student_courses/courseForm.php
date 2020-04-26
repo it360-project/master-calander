@@ -178,6 +178,8 @@
       echo "<form method='POST' action='insertStudentCourses.php'>
               <label for='numCourses'>Courses</label>";
       $numCourses = $_POST['numCourses'];
+      if($numCourses > 10)
+	     	$numCourses = 10;
       echo "<input list='courses' type='text' id='course1' name='course[]' placeholder='IT360, APPLIED DATABASE SYSTEMS' size='40' required><br>";
       for($i = 1; $i < $numCourses; $i++) {
         echo "<input list='courses' type='text' id='course$i' name='course[]' size='40' required><br>";
