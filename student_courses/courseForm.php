@@ -1,4 +1,3 @@
-<!-- visitors can only access this page if logged in -->
 
 <?php
   require_once('../login/nested_auth.inc.php');
@@ -179,9 +178,9 @@
       echo "<form method='POST' action='insertStudentCourses.php'>
               <label for='numCourses'>Courses</label>";
       $numCourses = $_POST['numCourses'];
-      echo "<input list='courses' type='text' id='course1' name='course[1]' placeholder='IT360, APPLIED DATABASE SYSTEMS' size='40' required><br>";
+      echo "<input list='courses' type='text' id='course1' name='course[]' placeholder='IT360, APPLIED DATABASE SYSTEMS' size='40' required><br>";
       for($i = 1; $i < $numCourses; $i++) {
-        echo "<input list='courses' type='text' id='course[$i]' name='course[$i]' size='40' required><br>";
+        echo "<input list='courses' type='text' id='course$i' name='course[]' size='40' required><br>";
       }
       insertDataList();
       echo "<button type='submit' class='btn btn-default'>Submit</button>
