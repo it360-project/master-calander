@@ -9,11 +9,10 @@ $db = new myConnectDB();
 session_start();
 $sessionid = session_id();
 
-$userinfo = $_SESSION['user'];
-$username = $userinfo['user'];
-$fullname = $userinfo['fullname'];
-$first = $userinfo['first'];
-$last = $userinfo['last'];
+$username = $_SESSION['user']['user'];
+$fullname = $_SESSION['user']['fullname'];
+$first = $_SESSION['user']['first'];
+$last = $_SESSION['user']['last'];
 
 //log user off if requested and redirect
 if (isset($_REQUEST['logoff'])) {
@@ -66,7 +65,7 @@ function logon($db, $username, $sessionid) {
 
   //Return error if query returns no result
   if ($num_rows == 0){
-    return signUp($db, $username);
+    return signUp($db, $username, $first, $last);
   }
   else {
     //if query is successful, retrieve the results
@@ -133,7 +132,7 @@ $username - string username inputted by user
 $sessionid - string result of session_start()
 Output: true if a row was successfully inserted for the user
 */
-function signUp($db, $username) {
+function signUp($db, $username, $first, $last) {
   //SQL Insert statement generated:
   $query = "INSERT INTO auth_user (alpha, lastlogin, firstName, lastName)
   VALUES(?, NOW(), ?, ?)";
