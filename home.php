@@ -1,7 +1,7 @@
 <!-- visitors can only access this page if logged in -->
 
 <?php
-  require_once('auth.inc.php');
+  require_once('login/auth.inc.php');
 ?>
 
 
