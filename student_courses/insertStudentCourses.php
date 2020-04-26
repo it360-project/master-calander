@@ -11,8 +11,11 @@
   $alpha = $_SESSION['user']['user'];
   $courseArray = $_POST['course'];
 
+  //successful entries for user feedback
+  echo "<h2>Courses entered successfully:</h2><br>";
+
   //iterate through array of inputted courses
-  foreach($courseArray as $key => $value) {
+  foreach($courseArray as $value) {
     //retrieve value for text input from form
     $courseLine = $value;
     //separate using comma delimiter
@@ -39,6 +42,10 @@
     if (!$success || $db->affected_rows == 0) {
       echo "<h5>ERROR: " . $db->error . " for query *$query*</h5><hr>";
       return false;
+    }
+    else {
+      //user feedback for successfully added courses
+      echo "$courseCode<br>";
     }
 
     $stmt->close();
