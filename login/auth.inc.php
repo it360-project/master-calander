@@ -1,6 +1,6 @@
 <?php
 //MySQL library
-require_once('../../../priv/mysql.inc.php');
+require_once('../../../../priv/mysql.inc.php');
 //connect to SQLiteDatabase
 $db = new myConnectDB();
 
@@ -17,7 +17,7 @@ $last = $userinfo['last'];
 //log user off if requested and redirect
 if (isset($_REQUEST['logoff'])) {
   logoff($db, $sessionid);
-  header('Location: login.php');
+  header('Location: login/login.php');
   die;
 }
 
@@ -25,7 +25,7 @@ if (isset($_REQUEST['logoff'])) {
 if ($username) {
   //validate credentials, redirect if validation fails
   if (!logon($db, $username, $sessionid)) {
-    header('Location: login.php');
+    header('Location: login/login.php');
     die;
   }
 }
@@ -33,7 +33,7 @@ if ($username) {
 //verify user is logged in, otherwise redirect
 $user = verify($db, $sessionid);
   if ($user == '') {
-  header('Location: login.php');
+  header('Location: login/login.php');
   die;
 }
 

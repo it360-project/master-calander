@@ -2,10 +2,10 @@
 <?php
 session_start();
 if(isset($_SESSION['user']))
-  header("location: home.php");
+  header("location: ../home.php");
 if(isset($_REQUEST['login'])) {
   require_once('lib_authenticate.php');
-  header("location: home.php");
+  header("location: ../home.php");
 }
 ?>
 
@@ -21,15 +21,15 @@ if(isset($_REQUEST['login'])) {
          any other head content must come *after* these tags -->
 
     <!-- Icon to use on the browser bar -->
-    <link rel="icon" href="calendar/images/web-icon.png">
+    <link rel="icon" href="../calendar/images/web-icon.png">
 
     <!-- Bootstrap core CSS -->
-    <link href="calendar/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../calendar/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Skeleton CSS -->
-    <link rel="stylesheet" href="calendar/Skeleton/css/normalize.css">
-    <link rel="stylesheet" href="calendar/Skeleton/css/skeleton.css">
-    <link rel="stylesheet" href="calendar/css/skeleton-modifications.css">
+    <link rel="stylesheet" href="../calendar/Skeleton/css/normalize.css">
+    <link rel="stylesheet" href="../calendar/Skeleton/css/skeleton.css">
+    <link rel="stylesheet" href="../calendar/css/skeleton-modifications.css">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <link href="calendar/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
@@ -54,7 +54,7 @@ if(isset($_REQUEST['login'])) {
     <script type="text/javascript" src="calendar/js/sha256.js"></script> -->
 
     <!-- Styles for the submission System -->
-    <link href="calendar/css/calendar-default.css" rel="stylesheet">
+    <link href="../calendar/css/calendar-default.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -76,18 +76,18 @@ if(isset($_REQUEST['login'])) {
     </script> -->
 
     <!-- Highlight.js -->
-    <link rel="stylesheet" href="calendar/highlight/styles/color-brewer.css">
-    <script src='calendar/highlight/highlight.pack.js'></script>
+    <link rel="stylesheet" href="../calendar/highlight/styles/color-brewer.css">
+    <script src='../calendar/highlight/highlight.pack.js'></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
     <!-- Font-Awesome -->
-    <link rel="stylesheet" type="text/css" href="calendar/Font-Awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../calendar/Font-Awesome/css/font-awesome.min.css">
 
     <!-- Datatables -->
-    <link rel="stylesheet" type="text/css" href="calendar/datatables.net/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../calendar/datatables.net/datatables.min.css"/>
 
     <!-- Printing -->
-    <link rel="stylesheet" type="text/css" media="print" href="calendar/css/calendar-print.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="../calendar/css/calendar-print.css" />
 
     <!-- Custom CSS based on user preferences -->
 
@@ -97,12 +97,12 @@ if(isset($_REQUEST['login'])) {
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="calendar/jquery/js/jquery-3.4.1.min.js"></script>
-    <script src="calendar/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../calendar/jquery/js/jquery-3.4.1.min.js"></script>
+    <script src="../calendar/bootstrap/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="calendar/bootstrap3-ie10-viewport-bug-workaround/ie10-viewport-bug-workaround.js"></script> -->
     <!-- DataTables -->
-    <script type="text/javascript" src="calendar/datatables.net/datatables.min.js"></script>
+    <script type="text/javascript" src="../calendar/datatables.net/datatables.min.js"></script>
 
   <title>Master-Calander</title>
 
@@ -128,19 +128,19 @@ if(isset($_REQUEST['login'])) {
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-            <li><a href="calendar.php?load=home">
+            <li><a href="../calendar.php?load=home">
                 IT360 - Applied Database Systems</a></li>
 
 
-            <li><a title="Calendar" href="calendar.php?show=calendar_display">
+            <li><a title="Calendar" href="../calendar.php?show=calendar_display">
                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                 </a></li>
 
-            <li><a title="Resources" href="calendar.php?load=resources">
+            <li><a title="Resources" href="../calendar.php?load=resources">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 </a></li>
 
-            <li><a title="Information" href="calendar.php?load=policy">
+            <li><a title="Information" href="../calendar.php?load=policy">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
                 </a></li>
 
