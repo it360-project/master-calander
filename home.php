@@ -20,7 +20,7 @@
 <!DOCTYPE html>
 
 <html lang="en" style="background-color:#F2FEFE;">
-=======
+
 
   <head>
     <meta charset="utf-8">
