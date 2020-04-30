@@ -83,7 +83,7 @@
     <!-- DataTables -->
     <script type="text/javascript" src="calendar/datatables.net/datatables.min.js"></script>
 
-  <title>Master-Calander</title>
+  <title>Master-Calendar</title>
 
   </head>
 
