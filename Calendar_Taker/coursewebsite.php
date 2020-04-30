@@ -11,7 +11,7 @@
 
   include 'courseinsert.php';
   include 'Daysnatcher.php';
-  require_once('mysql.inc.php');
+  require_once('../../../../priv/mysql.inc.php');
   $db = new myConnectDB();
 
   DBupdater($db);
@@ -44,7 +44,7 @@
     $length = count($coursecode);
     //start of for loop
     for($i=0;$i<$length;$i+=1){
-      $courseadress=$address.$coursecode[$i]."/calendar.php?show=calendar_display";
+      $courseadress=$address.$coursecode[$i];
       $coursecalendars = Daysnatcher($courseadress);
 
       if($coursecalendars != false){

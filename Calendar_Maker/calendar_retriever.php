@@ -10,8 +10,8 @@
   // table entries, User account.
   //
   //
-  require_once('mysql.inc.php');
-  include('calander_creator.php');
+  require_once('../../../../priv/mysql.inc.php');
+  include('calendar_creator.php');
   $db = new myConnectDB();
   session_start();
 
@@ -27,8 +27,10 @@
   $stmt->prepare($query);
   $stmt->bind_param('s',$alpha);
   $check = $stmt->execute();
-  if (!$check || $db->affected_rows == 0)
-    echo "<h5>ERROR: " . $db->error . " for query *$query*assignmentinsert</h5><hr>";
+  if (!$check || $db->affected_rows == 0){
+    echo "FALSE";
+    exit();
+  }
 
   $stmt->bind_result($courseCode,$assignmentDate,$notes);
   $data = array(array());
@@ -36,7 +38,10 @@
     $data[$assignmentDate][$courseCode]=json_decode($notes);
   }
   unset($data[0]);
-
+  if(empty($data)){
+    echo "FALSE";
+    exit();
+  }
   $stmt->close();
   //****--------End: Assignemnt data Retrieval---------****
   //****--------Start: is it fall or spring?---------****

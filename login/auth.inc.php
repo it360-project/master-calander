@@ -1,10 +1,10 @@
 <?php
 /* Author: MIDN 2/C Samuel Kim
  * Purpose: consolidate the functions and logic necessary for tracking
- * 	user logins, session information and corresponding database 
+ * 	user logins, session information and corresponding database
  * 	inserts/updates.
  * This code is adapted from Lab 07: PHP Sessions.
- */ 
+ */
 
 //MySQL library
 require_once('../../../../priv/mysql.inc.php');
@@ -297,4 +297,3 @@ function update( $db, $username, $sessionString, $test = FALSE ){
 //update user row in the table
 update($db, $username, session_encode());
 ?>
-

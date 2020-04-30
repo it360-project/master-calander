@@ -65,5 +65,6 @@
 
     $stmt->close();
   }
+  header("Location:../home.php");
+  exit();
 ?>
-
