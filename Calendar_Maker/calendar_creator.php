@@ -133,7 +133,10 @@
         }
 
         if($daytracker%7==0 and $ii!=0){
-          echo"</tr><tr>";
+		if(($days[$i]-6)<$ii) 
+		  echo "</tr><tr>";
+		else	
+		  echo"</tr>";
         }
 
     }
