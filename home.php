@@ -129,5 +129,5 @@
 </div>
  <!-- /container AKA CALANDER -->
 </body>
-<script src="Calander_Maker/calander.js"></script>
+<script src="Calendar_Maker/calendar.js"></script>
 </html>
