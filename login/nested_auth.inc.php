@@ -7,7 +7,7 @@
  */
 
 //THIS FILE IS NOT A DUPLICATE (has minor changes for files within subdirectories)
-require_once('mysql.inc.php');
+require_once('../../../../../priv/mysql.inc.php');
 //connect to SQLiteDatabase
 $db = new myConnectDB();
 

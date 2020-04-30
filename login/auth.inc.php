@@ -30,7 +30,7 @@ if (isset($_REQUEST['logoff'])) {
 //log user on if credentials were inputted
 if ($username) {
   //validate credentials, redirect if validation fails
-  if (!logon($db, $username, $sessionid)) {
+  if (!logon($db, $username, $sessionid, $first, $last)) {
     header('Location: login/login.php');
     die;
   }
@@ -52,7 +52,7 @@ Input:
   $sessionid - string result of session_start()
 Output: true if credentials are valid and a session was created
 */
-function logon($db, $username, $sessionid) {
+function logon($db, $username, $sessionid, $first, $last) {
   //build query for retrieving alpha from user table
   $query = "SELECT alpha
   FROM auth_user
