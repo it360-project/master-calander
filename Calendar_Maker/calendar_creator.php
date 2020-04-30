@@ -19,7 +19,7 @@
       // Some convinient list to help with labeling
       $monthes = ["January","February","March","April","May","June","July","August","September","October","November","December"];
       $daysofweek = ["Saturday"=>0,"Sunday"=>1,"Monday"=>2,"Tuesday"=>3,"Wednesday"=>4,"Thursday"=>5,"Friday"=>6];
-      echo "<h3>Welcome to Master Calander</h3>";
+      echo "<h3>Welcome to Master Calendar</h3>";
       $currYear =date("Y");
       // ****--------Start: Month by Month---------****
       // Retrieves monthes based on designated time frame
