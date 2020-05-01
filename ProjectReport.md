@@ -78,4 +78,38 @@ The database also contains a trigger. The trigger is labeled *insertAccess()* an
 
 ### Login/User Management
 
-Our website is unique in that we utilize the USNA login in order to authenticate users. What this means is that instead of us maintaining passwords we decided to allow use the USNA system to handle it for us. Therefore in order to log onto the site a USNA account is required. The connection to the login system is facilitated in [lib_authenticate.php](login/lib_authenticate.php) okay wow
+Our website is unique in that we utilize the USNA login system in order to authenticate users. What this means is that instead of us maintaining passwords we decided to use the USNA system to handle it for us. Therefore in order to log onto the site a USNA account is required. The connection to the login system is facilitated in [lib_authenticate.php](login/lib_authenticate.php). Basically, when visiting the site you are taken to the [login.php](login/login.php) page which then redirects you to the USNA authentication if you choose to do so. The [lib_authenticate.php](login/lib_authenticate.php) page facilitates a connection with the server and provides us with useful information when returned to the site such as their name and alpha.
+
+To maintain server side information like tracking whether a user is logged in using a session, the [auth.inc.php](login/auth.inc.php) is utilized. This script is included at the top of every webpage to verify the login status of a user. The script also contains all our functions that allow our session management with our database such as *logoff()*, *verify()*, and *signup()*.
+
+### Student Course Forms
+
+After a student logs in for the first time (or signs up) it is necessary for the website to know which CS/IT courses that student is currently taking. The forms themselves are located in the [courseForm.php](student_courses/courseForm.php) script. There are two forms, one form that requests how many CS/IT classes the student is taking and another which buildes off the first form that inputs the actual course codes. A generic list of possible USNA course entries can be selected. These courses are found in [courses.csv](courses/courses.csv). After the information has been submitted in the second form, a script called [insertStudentCourse.php](student_courses/insertStudentCourse.php) handles inputting the student associated information into the database in order maintain this particular student's courses and be able to display them in the calendar later.
+
+### Stripping Course Websites
+
+In order to create a Master Calendar we needed to create an algorithm that would allow us to strip each standard course website of its information to consolidate it in our database. The backbone of this system is the [Daysnatcher.php](Calendar_Taker/Daysnatcher.php) script which rips a standard CS/IT calendar into a comprehensible list. The [coursewebsite.php](Calendar_Taker/coursewebsite.php) script takes all the courses located at http://courses.cs.usna.edu/ and utilizes the *Daysnatcher()* function to get a list back from each website. Finally, with the information stripped from the websites the [courseinsert.php](Calendar_Taker/courseinsert.php) facilitates the functions necessary to enter the information for each assignment into the database.
+
+### Making the Calendar
+
+In order to display a consolidated calendar to users two things are required. First, the information for that student has to be retrieved from the database. Second, the actual Calendar has to be built. The first is handled by the [calendar_retriever.php](Calendar_Maker/calendar_retriever.php) script that retrieves the necessary calendar information from the database based on which classes that student takes. The second is solved using the [calendar_creator.php](Calendar_Maker/calendar_creator.php) script which generates the html in order to create the calendar. In order to dynamically use the calendar on the webpage [home.php](home.php) a JavaScript file is utilized called [calendar.js](Calendar_Maker/calendar.php) that combines the two files outlined above in order to display the calendar in a useful fashion.
+
+## User Manuel
+
+Next will be a comprehensible guide on how you can utilize the Master Calendar.
+
+First, when attempting to access the site you will be prompted to log in. Once the log in link is clicked you will be brought to a USNA sign in page where you will enter your usna.edu information.
+
+![Sign in](images/signIn.png)
+
+Next the new user will be prompted to enter how many CS/IT courses they would like to add to the Calendar. Then they will enter each class in the next form.
+
+![Number of courses](images/form.png)
+
+![Course entry](images/form2.png)
+
+Finally, upon submitting those two forms you are brought to your Master Calendar which contains each assignment based on their day for all the CS/IT applicable classes you entered in the form.
+
+![Calendar example](images/cal.png)
+
+There you have it! A simple, easy to use system. Hopefully this calendar saves you time by giving you a quick look at all your assignments in one place. Admittedly the website is limited in the number of courses that follow the required format for us to strip. However, we believe this is a stepping stone to a more consolidated calendar system for students that improves their quality of life and increases productivity. 
