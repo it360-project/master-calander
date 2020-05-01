@@ -69,13 +69,13 @@ For login, there are three tables: auth_user, auth_session, and auth_access. The
 
 To handle the calendar system there are an additional three tables: courseCode, student_courses, and assignments. The courseCode table keeps a list of CS/IT courses that use the official Calendar template that students could take. Next, the student_courses table keeps track of which courses students are taking that have signed up. Finally, the assignments table contains the assignments from each individual CS/IT calendar and their respective date.
 
-#### trigger
+#### Trigger
 
 The database also contains a trigger. The trigger is labeled *insertAccess()* and its role in the database is to insert a default entry into the auth_access table upon an insert into the auth_user table. This allows every new user to automatically have a default entry in the auth_access table.
 
-* [trigger.sql](tables/sql/triggers.sql)
+* [triggers.sql](tables/sql/triggers.sql)
 
 
 ### Login/User Management
 
-Our website is unique in that we utilize the USNA login in order to authenticate users. What this means is that instead of us maintaining passwords we decided to allow use the USNA system. Therefore in order to log onto the site a USNA account is required. 
+Our website is unique in that we utilize the USNA login in order to authenticate users. What this means is that instead of us maintaining passwords we decided to allow use the USNA system to handle it for us. Therefore in order to log onto the site a USNA account is required. The connection to the login system is facilitated in [lib_authenticate.php](login/lib_authenticate.php) okay
