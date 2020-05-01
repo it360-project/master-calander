@@ -1,10 +1,10 @@
 <?php
 /* Author: MIDN 2/C Samuel Kim
  * Purpose: consolidate the functions and logic necessary for tracking
- * 	user logins, session information and corresponding database 
+ * 	user logins, session information and corresponding database
  * 	inserts/updates.
  * This code is adapted from Lab 07: PHP Sessions.
- */ 
+ */
 
 //MySQL library
 require_once('../../../../priv/mysql.inc.php');
@@ -30,7 +30,7 @@ if (isset($_REQUEST['logoff'])) {
 //log user on if credentials were inputted
 if ($username) {
   //validate credentials, redirect if validation fails
-  if (!logon($db, $username, $sessionid)) {
+  if (!logon($db, $username, $sessionid, $first, $last)) {
     header('Location: login/login.php');
     die;
   }
@@ -52,7 +52,7 @@ Input:
   $sessionid - string result of session_start()
 Output: true if credentials are valid and a session was created
 */
-function logon($db, $username, $sessionid) {
+function logon($db, $username, $sessionid, $first, $last) {
   //build query for retrieving alpha from user table
   $query = "SELECT alpha
   FROM auth_user
@@ -297,4 +297,3 @@ function update( $db, $username, $sessionString, $test = FALSE ){
 //update user row in the table
 update($db, $username, session_encode());
 ?>
-

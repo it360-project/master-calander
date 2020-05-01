@@ -1,4 +1,4 @@
-<!-- visitors can only access this page if logged in -->
+  <!-- visitors can only access this page if logged in -->
 
   <!--
   // Author: Jess Lonetti,Greg Polmatier,Sam Kim...CS Department(Navbar and CSS)
@@ -12,7 +12,7 @@
  -->
 
 <?php
-  require_once('login/auth.inc.php');
+  require_once('./login/auth.inc.php');
 ?>
 
 
@@ -28,6 +28,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head;
          any other head content must come *after* these tags -->
+
+    <!-- My css -->
+    <link rel="stylesheet" href="my.css">
 
     <!-- Icon to use on the browser bar -->
     <link rel="icon" href="calendar/images/web-icon.png">
@@ -80,7 +83,7 @@
     <!-- DataTables -->
     <script type="text/javascript" src="calendar/datatables.net/datatables.min.js"></script>
 
-  <title>Master-Calander</title>
+  <title>Master-Calendar</title>
 
   </head>
 
@@ -108,7 +111,7 @@
 
 
             <li><a href="#">
-                Master Calander</a></li>
+                Master Calendar</a></li>
             <li><a href="home.php?logoff=1">Sign out</a></li>
             <li><a href="http://submit.cs.usna.edu/site/home.php">Submission</a></li>
 
@@ -126,6 +129,5 @@
 </div>
  <!-- /container AKA CALANDER -->
 </body>
-<script src="calander.js"></script>
+<script src="Calendar_Maker/calendar.js"></script>
 </html>
-

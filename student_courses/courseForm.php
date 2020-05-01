@@ -101,7 +101,7 @@
     <!-- DataTables -->
     <script type="text/javascript" src="../calendar/datatables.net/datatables.min.js"></script>
 
-  <title>Master-Calander</title>
+  <title>Master-Calendar</title>
 
   </head>
   <body>
@@ -126,20 +126,8 @@
           <ul class="nav navbar-nav">
 
             <li><a href="../calendar.php?load=home">
-                IT360 - Applied Database Systems</a></li>
+                Master Calendar</a></li>
 
-
-            <li><a title="Calendar" href="../calendar.php?show=calendar_display">
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Resources" href="../calendar.php?load=resources">
-                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Information" href="../calendar.php?load=policy">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -231,4 +219,3 @@
       echo "</datalist>";
     }
 ?>
-

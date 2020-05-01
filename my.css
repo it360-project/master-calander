@@ -1,0 +1,12 @@
+.content-center-day{
+  padding: 5px;
+  transition: transform .4s;
+  height: 150px;
+  overflow: auto;
+}
+
+
+.content-center-day:checked {
+  transform: scale(1.5);
+  overflow: visible;
+}

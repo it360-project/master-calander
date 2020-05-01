@@ -10,9 +10,11 @@
   // Example List["2020-25-02"]["IC211"]["Class2"or"Bold"]
 
   function Daysnatcher($address){
+    $courseaddress = $address."/calendar.php?show=calendar_display";
+    $address = $address."/";
     $monthlist = ["January"=>"01","February"=>"02","March"=>"03","April"=>"04","May"=>"05","June"=>"06","July"=>"07","August"=>"08","September"=>"09","October"=>"10","November"=>"11","December"=>"12"];
     $dayslist =    [31,28,31,30,31,30,31,31,30,31,30,31];
-    $html = file_get_contents($address);
+    $html = file_get_contents($courseaddress);
     if(false ==  $html)
       return $html;
 

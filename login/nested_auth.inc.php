@@ -1,7 +1,7 @@
 <?php
 /* Author: MIDN 2/C Samuel Kim
  * Purpose: consolidate the functions and logic necessary for tracking
- *      user logins, session information and corresponding database 
+ *      user logins, session information and corresponding database
  *      inserts/updates.
  * This code is adapted from Lab 07: PHP Sessions.
  */
@@ -298,4 +298,3 @@ function update( $db, $username, $sessionString, $test = FALSE ){
 //regularly update user information in the table
 update($db, $username, session_encode());
 ?>
-

@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Author: MIDN 2/C Samuel Kim
 Purpose: Users who are not logged in will be redirected to this page.
 	and prompted to log in.
@@ -110,7 +110,7 @@ if(isset($_REQUEST['login'])) {
     <!-- DataTables -->
     <script type="text/javascript" src="../calendar/datatables.net/datatables.min.js"></script>
 
-  <title>Master-Calander</title>
+  <title>Master-Calendar</title>
 
   </head>
   <body>
@@ -135,22 +135,7 @@ if(isset($_REQUEST['login'])) {
           <ul class="nav navbar-nav">
 
             <li><a href="../calendar.php?load=home">
-                IT360 - Applied Database Systems</a></li>
-
-
-            <li><a title="Calendar" href="../calendar.php?show=calendar_display">
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Resources" href="../calendar.php?load=resources">
-                <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                </a></li>
-
-            <li><a title="Information" href="../calendar.php?load=policy">
-                <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                </a></li>
-
-
+                Master Calendar</a></li>
 
           </ul>
         </div><!--/.nav-collapse -->
@@ -160,8 +145,7 @@ if(isset($_REQUEST['login'])) {
   <!-- End TopBar and CSS Stuff! -->
 <!-- Begin providing the contents of the page -->
 <div class="container">
-  <h2> Not logged in!</h2>
+  <h3> Not logged in!</h3>
   <p><a href="login.php?login=1">Sign in</a></p>
 
 </div> <!-- /container --></body></html>
-
