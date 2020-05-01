@@ -78,4 +78,4 @@ The database also contains a trigger. The trigger is labeled *insertAccess()* an
 
 ### Login/User Management
 
-Our website is unique in that we utilize the USNA login in order to authenticate users. What this means is that instead of us maintaining passwords we decided to allow use the USNA system to handle it for us. Therefore in order to log onto the site a USNA account is required. The connection to the login system is facilitated in [lib_authenticate.php](login/lib_authenticate.php) okay
+Our website is unique in that we utilize the USNA login in order to authenticate users. What this means is that instead of us maintaining passwords we decided to allow use the USNA system to handle it for us. Therefore in order to log onto the site a USNA account is required. The connection to the login system is facilitated in [lib_authenticate.php](login/lib_authenticate.php) okay wow
