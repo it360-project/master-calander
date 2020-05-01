@@ -56,7 +56,7 @@ function cText(event){
   }
   else {
     event.target.innerHTML = "Minimize";
-    calander.style.display = "block";
+    calander.style.display = "";
 
 
   }
