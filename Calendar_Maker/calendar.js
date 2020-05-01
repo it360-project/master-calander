@@ -13,7 +13,7 @@ if (this.readyState == 4 && this.status == 200) {
   var response=xhttp.responseText;
   console.log(response);
   if(response == "FALSE")
-    window.location.href = "./student_courses/courseForm.php";
+    window.location.href = "http://midn.cs.usna.edu/~m213474/IT360/IT360-project/master-calander/student_courses/courseForm.php";
   else{
   document.getElementById("cal").innerHTML = response;
   var date = new Date();

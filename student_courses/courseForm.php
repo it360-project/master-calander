@@ -125,7 +125,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 
-            <li><a href="../calendar.php?load=home">
+            <li><a href="../home.php">
                 Master Calendar</a></li>
 
           </ul>
