@@ -27,7 +27,7 @@
       for($i=$start;$i<$end;$i++){
         $daytracker=$daysofweek[date("l",strtotime($currYear."-".($i+1)."-01"))];
         echo  '<h4>'.$monthes[$i]." ".$currYear.'</h4>';
-        echo '<button type="button" class ="btn" id="b'.$monthes[$i].'">Maximize</button>';
+        echo '<button type="button" class ="btn" id="b'.$monthes[$i].'">Maximize</button><br>';
         echo '<table class="table table-striped table-bordered calendar" id = "'.$monthes[$i].'" style="display:none;"><thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead><tbody><tr>';
         monthBuilder($monthHeader,$daytracker,$i,$data);
 
